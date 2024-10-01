@@ -1,38 +1,223 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ffcc80, #ff5722);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .App {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 1500px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+h1 {
+  color: #ba1717;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.PetInfo {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.PetInfo:hover {
+  transform: scale(1.05);
+}
+
+
+.PetImage {
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  margin-bottom: 10px;
+
+  
+  box-shadow: 0 0 15px 5px rgba(255, 165, 0, 0.6),
+              0 0 25px 10px rgba(255, 140, 0, 0.6),
+              0 0 35px 15px rgba(255, 69, 0, 0.6);
+}
+
+
+.fade {
+  animation: fadeEffect 1s ease-in-out; 
+}
+
+@keyframes fadeEffect {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.PetImage:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px 10px rgba(255, 165, 0, 0.8),
+              0 0 35px 15px rgba(255, 140, 0, 0.8),
+              0 0 45px 20px rgba(255, 69, 0, 0.8);
+}
+
+.PetImage.bouncing {
+  animation: bounce 0.5s ease infinite;
+}
+
+.PetImage.pulsing {
+  animation: pulse 1s ease infinite;
+  filter: grayscale(50%);
+}
+
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.logs {
+  width: 35%;
+  background-color: rgba(255, 245, 157, 0.9);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart {
+  width: 60%;
+}
+
+/* Стили логов */
+.Log {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Log li {
+  background-color: #ffcc80;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 10px;
+  text-align: left;
+}
+
+.Log li:nth-child(even) {
+  background-color: #ffb74d;
+}
+
+
+.actions {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #ff5722;
   color: white;
+  border: none;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
 }
 
-.App-link {
-  color: #61dafb;
+button i {
+  margin-right: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+  background-color: #e64a19;
+  transform: translateY(-2px);
+}
+
+button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.status-bars {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.status-bar {
+  width: 100px;
+  height: 15px;
+  background-color: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-bar-inner {
+  height: 100%;
+  border-radius: 8px;
+}
+
+.energy {
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.energy.low {
+  background-color: #f44336; 
+}
+
+.health {
+  background-color: #2196f3;
+  transition: width 0.3s ease;
+}
+
+.health.low {
+  background-color: #f44336; 
 }
